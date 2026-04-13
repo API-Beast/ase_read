@@ -27,6 +27,7 @@ struct AseFile* file = ase_read_file("sprite.ase");
 int texture_width = file->num_frames * file->width;
 int texture_pitch = texture_width * 4;
 uint8_t* texture_data = malloc(file->height * texture_pitch);
+memset(texture_data, 0, file->height * texture_pitch); // Initialize to transparent black.
 for(int frame = 0; frame < file->num_frames; frame++)
     ase_draw_frame(file, frame, texture_data, texture_pitch, file->width * frame, 0);
 ```
